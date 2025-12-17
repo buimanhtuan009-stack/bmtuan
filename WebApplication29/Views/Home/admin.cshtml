@@ -1,0 +1,308 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    body {
+        background: #f6f7fb;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 240px;
+        background: #fff;
+        height: 100vh;
+        border-right: 1px solid #e5e7eb;
+        padding: 25px 20px;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+
+        .sidebar h4 {
+            font-size: 12px;
+            margin-bottom: 12px;
+            opacity: 0.6;
+        }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: 8px;
+        transition: 0.2s;
+    }
+
+        .menu-item:hover,
+        .active {
+            background: #e9efff;
+            color: #3b5bfd;
+        }
+
+    /* RIGHT WRAPPER */
+    .main-wrapper {
+        margin-left: 240px;
+        width: calc(100% - 240px);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* HEADER */
+    .header {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 35px;
+        background: #f6f7fb;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+    }
+
+    .search-box input {
+        width: 350px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 1px solid #e3e3e3;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .header-icons img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    /* MAIN CONTENT */
+    .main {
+        padding: 20px 35px 40px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 25px;
+    }
+
+    .card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 18px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        width: 100%;
+    }
+
+    .map-box {
+        width: 100%;
+        height: 250px;
+        background: #e8eef7;
+        border-radius: 15px;
+        margin: 15px 0;
+    }
+
+    .rental-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+        .rental-info img {
+            width: 110px;
+            border-radius: 12px;
+        }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .info-item small {
+        opacity: .6;
+        font-size: 12px;
+    }
+
+    .info-item div {
+        margin-top: 4px;
+        font-size: 14px;
+    }
+
+    /* Donut Chart */
+    .donut {
+        width: 190px;
+        height: 190px;
+        border-radius: 50%;
+        background: conic-gradient(#4c84ff 0% 40%, #1b6cff 40% 65%, #9abfff 65% 80%, #c8d9ff 80% 100%);
+        margin: 15px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .donut .center {
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+    /* Transactions */
+    .transaction {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+    }
+
+        .transaction img {
+            width: 70px;
+            border-radius: 10px;
+        }
+</style>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h4>MAIN MENU</h4>
+    <div class="menu-item active">Dashboard</div>
+    <div class="menu-item">Car Rent</div>
+    <div class="menu-item">Insight</div>
+    <div class="menu-item">Reimburse</div>
+    <div class="menu-item">Inbox</div>
+    <div class="menu-item">Calendar</div>
+
+    <h4 style="margin-top:25px;">PREFERENCES</h4>
+    <div class="menu-item">Settings</div>
+    <div class="menu-item">Help Center</div>
+    <div class="menu-item">Dark Mode</div>
+
+    <div class="menu-item" style="margin-top:30px;">Log Out</div>
+</div>
+
+<!-- MAIN RIGHT -->
+<div class="main-wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="search-box">
+            <input type="text" placeholder="Search something here">
+        </div>
+
+        <div class="header-icons">
+            <img src="https://i.pravatar.cc/40" />
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <div class="grid">
+
+            <!-- LEFT CARD -->
+            <div class="card">
+                <h3>Details Rental</h3>
+
+                <div class="map-box"></div>
+
+                <div class="rental-info">
+                    <img src="/images/car.png">
+                    <div>
+                        <h3>Nissan GT – R</h3>
+                        <small>Sport Car</small>
+                    </div>
+                    <span>#9761</span>
+                </div>
+
+                <h4 style="margin-top:15px;">Pick-Up</h4>
+                <div class="info-grid">
+                    <div class="info-item"><small>Location</small><div>Kota Semarang</div></div>
+                    <div class="info-item"><small>Date</small><div>20 July 2022</div></div>
+                    <div class="info-item"><small>Time</small><div>07.00</div></div>
+                </div>
+
+                <h4 style="margin-top:15px;">Drop-Off</h4>
+                <div class="info-grid">
+                    <div class="info-item"><small>Location</small><div>Kota Semarang</div></div>
+                    <div class="info-item"><small>Date</small><div>21 July 2022</div></div>
+                    <div class="info-item"><small>Time</small><div>01.00</div></div>
+                </div>
+
+                <div style="margin-top:20px; font-size:18px; font-weight:bold;">
+                    Total Rental Price
+                    <span style="float:right;">$80.00</span>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div>
+
+                <div class="card">
+                    <h3>Top 5 Car Rental</h3>
+
+                    <div class="donut">
+                        <div class="center">
+                            72,030
+                            <small style="opacity:0.6; font-weight:normal;">Rental Car</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:25px;">
+                    <h3>Recent Transactions</h3>
+
+                    <div class="transaction">
+                        <img src="/images/car.png">
+                        <div>
+                            <div>Nissan GT – R</div>
+                            <small>Sport Car</small>
+                        </div>
+                        <span>$80.00</span>
+                    </div>
+
+                    <div class="transaction">
+                        <img src="/images/car.png">
+                        <div>
+                            <div>Koenigsegg</div>
+                            <small>Sport Car</small>
+                        </div>
+                        <span>$99.00</span>
+                    </div>
+
+                    <div class="transaction">
+                        <img src="/images/car.png">
+                        <div>
+                            <div>Rolls – Royce</div>
+                            <small>Sport Car</small>
+                        </div>
+                        <span>$96.00</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

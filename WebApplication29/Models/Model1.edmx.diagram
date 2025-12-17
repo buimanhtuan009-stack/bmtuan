@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0be3a69695f646528354744d58e1e1a6" Name="Diagram1">
+        <EntityTypeShape EntityType="ThueXeDBModel.ChiTietXe" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ThueXeDBModel.DanhGia" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ThueXeDBModel.DonThue" Width="1.5" PointX="6" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ThueXeDBModel.NguoiDung" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ThueXeDBModel.ThongSoXe" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ThueXeDBModel.Xe" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ThueXeDBModel.XeYeuThich" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="ThueXeDBModel.FK__ChiTietXe__MaXe__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="ThueXeDBModel.FK__DanhGia__MaNguoi__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="ThueXeDBModel.FK__DanhGia__MaXe__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="ThueXeDBModel.FK__DonThue__MaNguoi__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="ThueXeDBModel.FK__DonThue__MaXe__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="ThueXeDBModel.FK__XeYeuThic__MaNgu__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="ThueXeDBModel.FK__ThongSoXe__MaXe__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="ThueXeDBModel.FK__XeYeuThich__MaXe__46E78A0C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

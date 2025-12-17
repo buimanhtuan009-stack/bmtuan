@@ -1,0 +1,390 @@
+﻿@{
+    ViewBag.Title = "Thanhtoan";
+}
+<style>
+/* ===== RESET ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{
+    font-family:'Inter',sans-serif;
+    background:#f6f7fb;
+    margin:0;
+    padding:40px;
+    color:#1f2937;
+}
+img{max-width:100%;display:block}
+
+/* ===== LAYOUT ===== */
+.page{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 350px;
+    gap:32px;
+    align-items:start;
+}
+.left{display:flex;flex-direction:column;gap:28px}
+
+/* ===== SECTION ===== */
+.section{
+    background:#fff;
+    padding:32px;
+    border-radius:18px;
+    border:1px solid #e5e7eb;
+}
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.section-header h2{font-size:22px;margin:0;font-weight:600}
+.section-header span{font-size:15px;color:#9ca3af}
+.section-sub{font-size:15px;color:#9ca3af;margin:10px 0 25px}
+
+/* ===== FORM ===== */
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+    margin-bottom:20px;
+}
+label{display:block;margin-bottom:8px;color:#4b5563;font-size:15px}
+input,select{
+    width:100%;
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #e5e7eb;
+    background:#f9fafb;
+    font-size:15px;
+}
+
+/* ===== PAYMENT ===== */
+.pay-method{
+    margin:18px 0;
+    padding:18px;
+    border-radius:14px;
+    border:1px solid #e5e7eb;
+    background:#fafafa;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+}
+.credit-card-box{
+    margin-top:18px;
+    padding:22px;
+    border-radius:14px;
+    border:1px solid #e5e7eb;
+    background:#f9fafb;
+}
+.radio-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:17px;
+    font-weight:500;
+    margin:18px 0 14px;
+}
+
+/* ===== CONFIRM ===== */
+.confirm-line{
+    display:flex;
+    gap:14px;
+    padding:15px;
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    margin-bottom:16px;
+    font-size:15px;
+}
+.btn{
+    margin-top:22px;
+    padding:15px 28px;
+    background:#3164f4;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:500;
+    cursor:pointer;
+}
+.safe-box{
+    display:flex;
+    gap:16px;
+    margin-top:25px;
+}
+.safe-box img{width:42px;opacity:.85}
+.safe-text strong{display:block;margin-bottom:4px}
+
+/* ===== SUMMARY ===== */
+.summary{
+    background:#fff;
+    padding:32px;
+    border-radius:18px;
+    border:1px solid #e4e7ec;
+    height:fit-content;
+}
+.summary-sub{font-size:15px;color:#9ca3af;margin-bottom:20px}
+.car-box{
+    background:#f9fafb;
+    padding:20px;
+    border-radius:14px;
+    border:1px solid #e5e7eb;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    margin-bottom:22px;
+}
+.car-box img{width:120px;border-radius:12px}
+.car-box h4{margin:0 0 6px;font-size:19px;font-weight:600}
+.stars{font-size:14px;color:#fbbf24}
+.stars span{color:#6b7280}
+.price-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:16px;
+    margin-bottom:10px;
+}
+.promo{
+    display:flex;
+    margin:22px 0;
+    background:#f3f4f6;
+    border-radius:12px;
+    overflow:hidden;
+}
+.promo input{border:none;background:transparent;padding:13px}
+.promo button{
+    background:#3164f4;
+    border:none;
+    color:#fff;
+    padding:13px 20px;
+    cursor:pointer;
+}
+.total{
+    display:flex;
+    justify-content:space-between;
+    font-size:18px;
+    font-weight:600;
+}
+.total-value{font-size:24px}
+.total-sub{font-size:14px;color:#9ca3af;margin-top:6px}
+
+/* ===== RESPONSIVE ===== */
+@@media(max-width:1024px){
+    .page{grid-template-columns:1fr}
+    .summary{margin-top:20px}
+}
+@@media(max-width:768px){
+    body{padding:16px}
+    .grid-2{grid-template-columns:1fr}
+    .page{display:flex;flex-direction:column}
+    .summary{order:-1}
+}
+</style>
+
+
+<div class="page">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+
+        <!-- BILLING INFO -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Billing Info</h2>
+                <span>Step 1 of 4</span>
+            </div>
+            <p class="section-sub">Please enter your billing info</p>
+
+            <div class="grid-2">
+                <div>
+                    <label>Name</label>
+                    <input placeholder="Your name">
+                </div>
+                <div>
+                    <label>Phone Number</label>
+                    <input placeholder="Phone number">
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <label>Address</label>
+                    <input placeholder="Address">
+                </div>
+                <div>
+                    <label>Town / City</label>
+                    <input placeholder="Town or city">
+                </div>
+            </div>
+        </div>
+
+        <!-- RENTAL INFO -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Rental Info</h2>
+                <span>Step 2 of 4</span>
+            </div>
+            <p class="section-sub">Please select your rental date</p>
+
+            <div class="radio-title">
+                <input type="radio" checked>
+                Pick - Up
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <label>Location</label>
+                    <select><option>Select your city</option></select>
+                </div>
+                <div>
+                    <label>Date</label>
+                    <select><option>Select your date</option></select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <label>Time</label>
+                    <select><option>Select your time</option></select>
+                </div>
+                <div></div>
+            </div>
+
+            <div class="radio-title">
+                <input type="radio">
+                Drop - Off
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <label>Location</label>
+                    <select><option>Select your city</option></select>
+                </div>
+                <div>
+                    <label>Date</label>
+                    <select><option>Select your date</option></select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <label>Time</label>
+                    <select><option>Select your time</option></select>
+                </div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- PAYMENT METHOD -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Payment Method</h2>
+                <span>Step 3 of 4</span>
+            </div>
+            <p class="section-sub">Please enter your payment method</p>
+
+            <div class="pay-method">
+                <div><input type="radio" checked> Credit Card</div>
+                <div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" height="20">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" height="20">
+                </div>
+            </div>
+
+            <div class="credit-card-box">
+                <div class="grid-2">
+                    <div>
+                        <label>Card Number</label>
+                        <input placeholder="Card number">
+                    </div>
+                    <div>
+                        <label>Expiration Date</label>
+                        <input placeholder="DD / MM / YY">
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <label>Card Holder</label>
+                        <input placeholder="Card holder">
+                    </div>
+                    <div>
+                        <label>CVC</label>
+                        <input placeholder="CVC">
+                    </div>
+                </div>
+            </div>
+
+            <div class="pay-method">
+                <div><input type="radio"> PayPal</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="22">
+            </div>
+
+            <div class="pay-method">
+                <div><input type="radio"> Bitcoin</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" height="22">
+            </div>
+        </div>
+
+        <!-- CONFIRMATION -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Confirmation</h2>
+                <span>Step 4 of 4</span>
+            </div>
+            <p class="section-sub">We are getting to the end. Just few clicks and your rental is ready!</p>
+
+            <div class="confirm-line">
+                <input type="checkbox">
+                <span>I agree with sending Marketing and newsletter emails.</span>
+            </div>
+
+            <div class="confirm-line">
+                <input type="checkbox">
+                <span>I agree with the terms, conditions and privacy policy.</span>
+            </div>
+
+            <button class="btn">Rent Now</button>
+
+            <div class="safe-box">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107806.png">
+                <div class="safe-text">
+                    <strong>All your data is safe</strong>
+                    <span>We use the most advanced security to provide the best experience.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUMMARY RIGHT SIDE -->
+    <div class="summary">
+        <h3>Rental Summary</h3>
+        <p class="summary-sub">
+            Prices may change depending on the length of the rental and the price of your rental car.
+        </p>
+
+        <div class="car-box">
+            <img src="~/Content/img/anho1.png" />
+            <div>
+                <h4>Nissan GT – R</h4>
+                <div class="stars">★★★★★ <span>440+ Reviewer</span></div>
+            </div>
+        </div>
+
+        <div class="price-row"><span>Subtotal</span><span>$80.00</span></div>
+        <div class="price-row"><span>Tax</span><span>$0</span></div>
+
+        <div class="promo">
+            <input placeholder="Apply promo code">
+            <button>Apply now</button>
+        </div>
+
+        <div class="total">
+            <span>Total Rental Price</span>
+            <span class="total-value">$80.00</span>
+        </div>
+
+        <p class="total-sub">Overall price and includes rental discount</p>
+    </div>
+
+</div>

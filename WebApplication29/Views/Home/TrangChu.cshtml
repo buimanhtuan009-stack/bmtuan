@@ -1,0 +1,840 @@
+﻿@model List<WebApplication29.Models.Xe>
+
+@{
+    ViewBag.Title = "Trang Chủ";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    body {
+        background: #f5f7fb;
+        font-family: Arial;
+    }
+
+    /* ================= BANNER ================= */
+    .banner-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .banner-box {
+        background: linear-gradient(135deg, #2f66f5, #5f89ff);
+        color: white;
+        border-radius: 18px;
+        padding: 28px;
+        position: relative;
+        overflow: hidden;
+        min-height: 230px;
+    }
+
+    .banner-box.second {
+        background: linear-gradient(135deg, #4e8dff, #3667f2);
+    }
+
+    .banner-box h2 {
+        font-weight: 700;
+        margin-bottom: 12px;
+        font-size: 24px;
+    }
+
+    .banner-box p {
+        opacity: 0.9;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .banner-btn {
+        background: white;
+        color: #2f66f5;
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+    }
+
+    .banner-box img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 230px;
+        opacity: 0.95;
+        transform: translateY(18px);
+    }
+
+    /* ================= SEARCH FORM ================= */
+    .search-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 40px 0;
+    }
+
+    .search-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 22px 28px;
+        width: 48%;
+        box-shadow: 0px 6px 25px rgba(0,0,0,0.06);
+    }
+
+    .search-title {
+        font-weight: bold;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .search-title i {
+        color: #2f66f5;
+        font-size: 10px;
+        margin-right: 6px;
+    }
+
+    .search-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .label-small {
+        font-size: 13px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .select-box {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .swap-btn-center {
+        margin: 0 18px;
+        background: #2f66f5;
+        border: none;
+        color: white;
+        padding: 16px 18px;
+        border-radius: 12px;
+        font-size: 20px;
+        cursor: pointer;
+        height: fit-content;
+    }
+
+    /* ================= LIST CAR ================= */
+    .car-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+    }
+
+    .car-item {
+        border: 1px solid #eee;
+        padding: 15px;
+        border-radius: 15px;
+        background: white;
+        transition: .2s;
+    }
+
+    .car-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px #ddd;
+    }
+
+    .car-item img {
+        width: 100%;
+        border-radius: 10px;
+        height: 120px;
+        object-fit: cover;
+    }
+
+    .price {
+        font-size: 17px;
+        font-weight: bold;
+        color: #2f66f5;
+    }
+
+    .btn-rent {
+        background: #2f66f5;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 25px 5px 15px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #1a1a1a;
+    }
+
+    .view-all {
+        font-size: 14px;
+        font-weight: 600;
+        color: #3563e9;
+        text-decoration: none;
+    }
+
+    /* ===== GRID ===== */
+    .morent-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 22px;
+        margin: 0 20px 40px;
+    }
+
+    /* ===== CARD ===== */
+    .morent-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 16px;
+        transition: 0.2s;
+        position: relative;
+    }
+
+    .morent-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    /* ===== TOP ===== */
+    .morent-card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .morent-card-top h4 {
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .morent-card-top small {
+        color: #888;
+        font-size: 12px;
+    }
+
+    .fav {
+        color: #e63946;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* ===== IMAGE ===== */
+    .car-img {
+        width: 100%;
+        height: 120px;
+        object-fit: contain;
+        margin: 15px 0 10px;
+    }
+
+    /* ===== SPEC ===== */
+    .morent-spec {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #777;
+        margin-bottom: 10px;
+    }
+
+    /* ===== PRICE + BUTTON ===== */
+    .morent-card-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #3563e9;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    .rent-btn {
+        background: #3563e9;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        font-size: 13px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    /* ===== SHOW MORE ===== */
+    .show-more-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 40px 0;
+    }
+
+    .show-more-btn {
+        background: #3F6FF6;
+        color: #fff;
+        border: none;
+        padding: 8px 22px;
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .total-car {
+        position: absolute;
+        right: 40px;
+        font-size: 12px;
+        color: #9aa5b1;
+    }
+
+    /* ========== FIX SAI CÚ PHÁP — CHỈ MOBILE ========== */
+    @@media (max-width: 480px) {
+
+        body {
+            margin: 0;
+            padding: 0 10px;
+            overflow-x: hidden;
+        }
+
+        /* Banner */
+        .banner-wrapper {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        /* Search */
+        .search-container {
+            flex-direction: column;
+            width: 100%;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .search-card {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .search-row {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        /* Product grid */
+        .morent-grid {
+            grid-template-columns: 1fr !important;
+            margin: 0;
+            gap: 15px;
+        }
+    }
+
+    /* ================= CARD (LARGE BANNER) ================= */
+    .card {
+        position: relative;
+        width: 700px;
+        height: 350px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .card-bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .card-text {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 45%;
+        color: white;
+    }
+
+    .card-text h2 {
+        margin: 0 0 10px 0;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .card-text p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .card-text button {
+        padding: 12px 25px;
+        background: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        color: #1A4EF5;
+    }
+
+    /* Fav */
+    .fav {
+        font-size: 18px;
+        color: #94a3b8;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 6px;
+        transition: .2s;
+    }
+
+    .fav.active {
+        color: #ef233c;
+        background: rgba(239, 35, 60, 0.15);
+    }
+
+    /* ================= MOBILE — FIX HOÀN CHỈNH ================= */
+    @@media (max-width: 480px) {
+
+        /* Card large responsive */
+        .card {
+            width: 100% !important;
+            height: 220px !important;
+            border-radius: 16px;
+        }
+
+        .card-text {
+            width: 80%;
+            top: 25px;
+            left: 20px;
+        }
+
+        .card-text h2 {
+            font-size: 18px;
+            line-height: 22px;
+        }
+
+        .card-text p {
+            font-size: 13px;
+        }
+
+        .card-text button {
+            padding: 8px 15px;
+            font-size: 12px;
+        }
+
+        /* Search */
+        .search-container {
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .search-card {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .search-row {
+            grid-template-columns: 1fr;
+        }
+
+        .swap-btn-center {
+            width: 100%;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        /* Cars */
+        .morent-grid {
+            grid-template-columns: 1fr !important;
+            gap: 18px;
+        }
+
+        .car-img {
+            height: 100px;
+        }
+    }
+    @@media (max-width: 480px) {
+
+    /* Giảm kích thước logo */
+    header .logo {
+        font-size: 20px !important;
+    }
+
+    /* Thu nhỏ toàn bộ icon */
+    header i,
+    header .icon {
+        font-size: 16px !important;
+    }
+
+    /* Giảm khoảng cách icon để không tràn màn hình */
+    header .icon-group {
+        gap: 10px !important;
+    }
+
+    /* Avatar nhỏ lại */
+    header img,
+    header .avatar {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    /* Thanh header không cho item giãn quá to */
+    header {
+        padding: 10px 12px !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100% !important;
+    }
+
+    /* Ô Search không được cao quá */
+    header .search-box {
+        max-width: 150px !important;
+        padding: 6px 10px !important;
+    }
+
+    header input {
+        font-size: 13px !important;
+    }
+}/* ====================== FIX TOÀN TRANG BỊ THU NHỎ ====================== */
+html, body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+
+/* ====================== FIX TRÀN MOBILE ====================== */
+@@media (max-width: 480px) {
+
+    /* Fix banner card rộng 700px */
+    .card {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .card-bg {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+
+    .card-text {
+        width: 85% !important;
+        left: 15px !important;
+        top: 20px !important;
+    }
+
+
+    /* Fix search container bị tràn do layout ngang */
+    .search-container {
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .swap-btn-center {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 10px 0 !important;
+    }
+
+
+    /* Fix grid tràn */
+    .morent-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .morent-card {
+        width: 100% !important;
+    }
+
+    /* Fix Rent Now không bị đẩy lệch */
+    .morent-card-bottom {
+        width: 100% !important;
+    }
+
+    .rent-btn {
+        white-space: nowrap !important;
+    }
+
+    /* Fix ảnh xe */
+    .car-img {
+        width: 100% !important;
+        height: 120px !important;
+        object-fit: contain !important;
+    }
+
+}
+
+
+
+</style>
+
+
+
+<!-- ====================== BANNER 2 Ô ======================= -->
+<div class="banner-wrapper">
+
+    <div class="card">
+        <img src="~/Content/img/ben1.png" class="card-bg">
+
+        <div class="card-text">
+            <h2>The Best Platform for Car Rental</h2>
+            <p>Ease of doing a car rental safely and reliably. Of course at a low price.</p>
+            <button>Rental Car</button>
+        </div>
+    </div>
+
+
+    <!-- Banner 2 -->
+
+    <div class="card">
+        <img src="~/Content/img/ben2.png" class="card-bg">
+
+        <div class="card-text">
+            <h2>Easy way to rent a car at a low price</h2>
+            <p>Providing cheap car rental services and safe and comfortable facilities.</p>
+            <button>Rental Car</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- ====================== SEARCH FORM ======================= -->
+<div class="search-container">
+
+    <!-- PICK UP -->
+    <div class="search-card">
+        <div class="search-title">
+            <i class="fa fa-circle"></i> Pick - Up
+        </div>
+
+        <div class="search-row">
+
+            <div>
+                <label class="label-small">Locations</label>
+                <select class="select-box">
+                    <option>Select your city</option>
+                    <option>Hà Nội</option>
+                    <option>Hồ Chí Minh</option>
+                </select>  
+            </div>
+
+            <div>
+                <label class="label-small">Date</label>
+                <select class="select-box">
+                    <option>Select your date</option>
+                    <option>Hà Nội</option>
+                    <option>Hồ Chí Minh</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="label-small">Time</label>
+                <select class="select-box">
+                    <option>Select your time</option>
+                    <option>Hà Nội</option>
+                    <option>Hồ Chí Minh</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SWAP BTN -->
+    <button class="swap-btn-center"><i class="fa fa-exchange-alt"></i></button>
+
+    <!-- DROP OFF -->
+    <div class="search-card">
+        <div class="search-title">
+            <i class="fa fa-circle"></i> Drop - Off
+        </div>
+
+        <div class="search-row">
+
+            <div>
+                <label class="label-small">Locations</label>
+                <select class="select-box">
+                    <option>Select your city</option>
+                    <option>Hà Nội</option>
+                    <option>Hồ Chí Minh</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="label-small">Date</label>
+                <select class="select-box">
+                    <option>Select your date</option>
+                    <option>Hà Nội</option>
+                    <option>Hồ Chí Minh</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="label-small">Time</label>
+                <select class="select-box">
+                    <option>Select your time</option>
+                    <option>Hà Nội</option>
+                    <option>Hồ Chí Minh</option>
+                </select>
+            </div>
+
+        </div>
+    </div> 
+
+</div>
+
+
+
+<!-- ====================== LIST CAR ======================= -->
+<div class="section-title">
+    <span>Popular Car</span>
+    <a href="@Url.Action("admin1", "admin")" class="view-all">View All</a>
+</div>
+
+<div class="morent-grid">
+    @foreach (var xe in Model.Take(4))
+    {
+        <div class="morent-card">
+            <div class="morent-card-top">
+                <div>
+                    <h4>@xe.TenXe</h4>
+                    <small>@xe.LoaiXe</small>
+                </div>
+                <i class="fa fa-heart fav"></i>
+            </div>
+
+            <!-- PHẦN ẢNH ĐÃ SỬA ĐÚNG THEO YÊU CẦU -->
+            <div class="position-relative text-center">
+                @{
+                    var img = xe.AnhXe;
+
+                    if (!string.IsNullOrEmpty(img))
+                    {
+                        if (img.StartsWith("/"))
+                        {
+                            <img src="@Url.Content(img)" class="car-img" alt="@xe.TenXe" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Content/img/" + img)" class="car-img" alt="@xe.TenXe" />
+                        }
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/150" class="car-img" alt="No Image" />
+                    }
+                }
+            </div>
+
+            <div class="morent-spec">
+                <span><i class="fa fa-gas-pump"></i> 90L</span>
+                <span><i class="fa fa-cog"></i> Manual</span>
+                <span><i class="fa fa-user"></i> @xe.SoChoNgoi People</span>
+            </div>
+
+            <div class="morent-card-bottom">
+                <div>
+                    <span class="price">$@xe.GiaMoiNgay.00</span> / day<br />
+                    <small class="old-price">$100.00</small>
+                </div>
+                <a href="@Url.Action("ChiTiet", "Home", new { id = xe.MaXe })"
+                   class="rent-btn">
+                    Rent Now
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+<h3 class="section-title">Recommendation Car</h3>
+<div class="morent-grid">
+    @foreach (var xe in Model.Skip(4).Take(4))
+    {
+        <div class="morent-card">
+            <div class="morent-card-top">
+                <div>
+                    <h4>@xe.TenXe</h4>
+                    <small>@xe.LoaiXe</small>
+                </div>
+                <i class="fa fa-heart fav"></i>
+            </div>
+            <!-- PHẦN ẢNH ĐÃ SỬA ĐÚNG THEO YÊU CẦU -->
+            <div class="position-relative text-center">
+                @{
+                    var img = xe.AnhXe;
+
+                    if (!string.IsNullOrEmpty(img))
+                    {
+                        if (img.StartsWith("/"))
+                        {
+                            <img src="@Url.Content(img)" class="car-img" alt="@xe.TenXe" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Content/img/" + img)" class="car-img" alt="@xe.TenXe" />
+                        }
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/150" class="car-img" alt="No Image" />
+                    }
+                }
+            </div>
+
+            <div class="morent-spec">
+                <span><i class="fa fa-gas-pump"></i> 90L</span>
+                <span><i class="fa fa-cog"></i> Manual</span>
+                <span><i class="fa fa-user"></i> @xe.SoChoNgoi People</span>
+            </div>
+
+            <div class="morent-card-bottom">
+                <div>
+                    <span class="price">$@xe.GiaMoiNgay.00</span> / day<br />
+                    <small class="old-price">$100.00</small>
+                </div>
+                <a href="@Url.Action("Trangchu1", "Home", new { id = xe.MaXe })"
+                   class="rent-btn">
+                    Rent Now
+                </a>
+            </div>
+        </div>
+    }
+</div>
+<div class="show-more-wrapper">
+    <button class="show-more-btn">Show more car</button>
+    <span class="total-car">120 Car</span>
+</div>
+
+<script>
+    document.querySelectorAll(".fav").forEach(fav => {
+        fav.addEventListener("click", function () {
+            this.classList.toggle("active");
+        });
+    });
+</script>
+
+

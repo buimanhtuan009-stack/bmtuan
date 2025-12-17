@@ -1,0 +1,256 @@
+﻿@model List<WebApplication29.Models.Xe>
+
+@{
+    ViewBag.Title = "Danh sách xe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;font-family:Arial;background:#f5f7fb;max-width:100%;overflow-x:hidden}
+
+/* ================= LAYOUT ================= */
+.page-layout{display:grid;grid-template-columns:260px 1fr;width:100%}
+
+/* ================= SIDEBAR ================= */
+.filter-box{background:#fff;padding:20px;border-right:1px solid #eee}
+.filter-title{font-size:12px;font-weight:bold;color:#999;margin:10px 0;text-transform:uppercase}
+.filter-item{font-size:14px;margin-bottom:8px}
+
+/* ================= SEARCH ================= */
+.search-wrapper{display:flex;align-items:center;gap:25px;margin:0}
+.search-card{flex:1;background:#fff;padding:18px 25px;border-radius:22px;box-shadow:0 10px 25px rgba(0,0,0,.05)}
+.search-title{font-size:18px;font-weight:600;margin-bottom:18px;display:flex;gap:8px}
+.search-title i{font-size:10px;color:#3563e9}
+.search-row{display:flex;gap:20px}
+.search-row>div{flex:1}
+
+.label-small{font-size:13px;font-weight:600;margin-bottom:6px;display:block}
+.select-box{width:100%;border:none;border-bottom:1px solid #ddd;padding:10px;background:transparent}
+.select-box:hover{border-bottom-color:#3563e9}
+
+.swap-btn-center{width:50px;height:50px;border-radius:12px;background:#3563e9;color:#fff;border:none;font-size:20px}
+
+/* ================= GRID ================= */
+.car-list-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.morent-card{background:#fff;padding:16px;border-right:1px solid #eee;border-bottom:1px solid #eee}
+
+/* ================= CARD ================= */
+.morent-card-top{display:flex;justify-content:space-between}
+.morent-card-top h4{font-size:14px;margin:0}
+.morent-card-top small{font-size:12px;color:#888}
+
+.fav{font-size:18px;color:#94a3b8;padding:6px;cursor:pointer}
+.fav.active{color:#ef233c;background:rgba(239,35,60,.15)}
+
+.car-img{width:100%;height:120px;object-fit:contain;margin:10px 0}
+
+.morent-spec{display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:10px}
+.morent-card-bottom{display:flex;justify-content:space-between;align-items:center}
+
+.price{font-size:15px;font-weight:bold;color:#3563e9}
+.rent-btn{background:#3563e9;color:#fff;border:none;padding:8px 16px;font-size:13px}
+
+/* ================= SHOW MORE ================= */
+.show-more-wrap{text-align:center;padding:10px;background:#fff;border-top:1px solid #eee}
+.show-more{background:#3563e9;color:#fff;border:none;padding:10px 50px;font-weight:bold}
+
+/* ================= MOBILE ================= */
+@@media(max-width:480px){
+.page-layout{grid-template-columns:1fr}
+.filter-box{display:none}
+
+.search-wrapper{flex-direction:column;padding:0 10px}
+.search-row{flex-direction:column}
+.swap-btn-center{width:100%;height:45px}
+
+.car-list-grid{grid-template-columns:1fr;padding:10px;gap:12px}
+.morent-card{border-right:none;border-radius:12px}
+.rent-btn,.show-more{width:100%}
+}
+
+/* ================= TABLET ================= */
+@@media(min-width:481px) and (max-width:768px){
+.page-layout{grid-template-columns:1fr}
+.filter-box{display:none}
+.car-list-grid{grid-template-columns:repeat(2,1fr);padding:10px;gap:15px}
+}
+</style>
+
+<div class="page-layout">
+
+    <!-- SIDEBAR -->
+    <div class="filter-box">
+        <div class="filter-title">TYPE</div>
+        <div class="filter-item"><input type="checkbox" checked> Sport</div>
+        <div class="filter-item"><input type="checkbox" checked> SUV</div>
+        <div class="filter-item"><input type="checkbox"> MPV</div>
+        <div class="filter-item"><input type="checkbox"> Sedan</div>
+        <div class="filter-item"><input type="checkbox"> Coupe</div>
+        <div class="filter-item"><input type="checkbox"> Hatchback</div>
+
+        <hr />
+
+        <div class="filter-title">CAPACITY</div>
+        <div class="filter-item"><input type="checkbox" checked> 2 Person</div>
+        <div class="filter-item"><input type="checkbox"> 4 Person</div>
+        <div class="filter-item"><input type="checkbox"> 6 Person</div>
+        <div class="filter-item"><input type="checkbox"> 8 or More</div>
+
+        <hr />
+
+        <div class="filter-title">PRICE</div>
+        <input type="range" style="width:100%" />
+        <small>Max. $100.00</small>
+    </div>
+
+    <!-- CONTENT -->
+    <div>
+
+        <!-- SEARCH -->
+        <div class="search-wrapper">
+
+            <div class="search-wrapper">
+
+                <!-- PICK UP -->
+                <div class="search-card">
+                    <div class="search-title">
+                        <i class="fa fa-circle"></i> Pick - Up
+                    </div>
+
+                    <div class="search-row">
+                        <div>
+                            <label class="label-small">Locations</label>
+                            <select class="select-box">
+                                <option>Select your city</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="label-small">Date</label>
+                            <select class="select-box">
+                                <option>Select your date</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="label-small">Time</label>
+                            <select class="select-box">
+                                <option>Select your time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SWAP BUTTON -->
+                <button class="swap-btn-center">
+                    <i class="fa fa-exchange-alt"></i>
+                </button>
+
+                <!-- DROP OFF -->
+                <div class="search-card">
+                    <div class="search-title">
+                        <i class="fa fa-circle"></i> Drop - Off
+                    </div>
+
+                    <div class="search-row">
+                        <div>
+                            <label class="label-small">Locations</label>
+                            <select class="select-box">
+                                <option>Select your city</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="label-small">Date</label>
+                            <select class="select-box">
+                                <option>Select your date</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="label-small">Time</label>
+                            <select class="select-box">
+                                <option>Select your time</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARS -->
+        <div class="car-list-grid">
+            @foreach (var xe in Model)
+            {
+                <div class="morent-card">
+
+                    <div class="morent-card-top">
+                        <div>
+                            <h4>@xe.TenXe</h4>
+                            <small>@xe.LoaiXe</small>
+                        </div>
+                        <i class="fa fa-heart fav"></i>
+                    </div>
+
+                    <div class="position-relative text-center">
+                        @{
+                            var img = xe.AnhXe;
+
+                            if (!string.IsNullOrEmpty(img))
+                            {
+                                if (img.StartsWith("/"))
+                                {
+                                    <img src="@Url.Content(img)" class="car-img" alt="@xe.TenXe" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Content/img/" + img)" class="car-img" alt="@xe.TenXe" />
+                                }
+                            }
+                            else
+                            {
+                                <img src="https://via.placeholder.com/150" class="car-img" alt="No Image" />
+                            }
+                        }
+                    </div>
+
+                    <div class="morent-spec">
+                        <span><i class="fa fa-gas-pump"></i> 90L</span>
+                        <span><i class="fa fa-cog"></i> Manual</span>
+                        <span><i class="fa fa-user"></i> @xe.SoChoNgoi</span>
+                    </div>
+
+                    <div class="morent-card-bottom">
+                        <div>
+                            <span class="price">$@xe.GiaMoiNgay</span> / day
+                        </div>
+                        <a href="@Url.Action("Thanhtoan", "Home", new { id = xe.MaXe })"
+                           class="rent-btn">
+                            Rent Now
+                        </a>
+                    </div>
+
+                </div>
+            }
+        </div>
+
+        <div class="show-more-wrap">
+            <button class="show-more">Show more car</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    document.querySelectorAll(".fav").forEach(fav => {
+        fav.addEventListener("click", function () {
+            this.classList.toggle("active");
+        });
+    });
+</script>
