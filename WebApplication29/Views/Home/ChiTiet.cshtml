@@ -6,8 +6,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-   /* ================= GLOBAL ================= */
-/* ================= GLOBAL ================= */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -28,14 +26,12 @@ img {
 
 a { text-decoration: none; }
 
-/* ================= LAYOUT ================= */
 .layout {
     display: grid;
     grid-template-columns: 260px 1fr;
     width: 100%;
 }
 
-/* ================= SIDEBAR ================= */
 .sidebar {
     background: #fff;
     height: 100vh;
@@ -64,7 +60,6 @@ a { text-decoration: none; }
     border-color: #e5e7eb;
 }
 
-/* ================= CONTENT ================= */
 .content {
     padding: 30px;
     display: grid;
@@ -73,7 +68,6 @@ a { text-decoration: none; }
     width: 100%;
 }
 
-/* ================= BOX ================= */
 .car-box,
 .info-box,
 .review-box,
@@ -86,7 +80,6 @@ a { text-decoration: none; }
 .car-box { padding: 25px; }
 .info-box { padding: 28px; }
 
-/* ================= MAIN IMAGE ================= */
 .main-image-box {
     position: relative;
     height: 320px;
@@ -115,7 +108,6 @@ a { text-decoration: none; }
     position: relative;
 }
 
-/* ================= THUMB ================= */
 .thumbs {
     display: flex;
     gap: 14px;
@@ -135,7 +127,6 @@ a { text-decoration: none; }
     border-color: #3563E9;
 }
 
-/* ================= INFO ================= */
 .car-title {
     font-size: 28px;
     font-weight: 800;
@@ -152,7 +143,6 @@ a { text-decoration: none; }
     max-width: 420px;
 }
 
-/* ================= SPEC ================= */
 .spec-row {
     display: grid;
     grid-template-columns: repeat(4, max-content);
@@ -172,7 +162,6 @@ a { text-decoration: none; }
     color: #1A202C;
 }
 
-/* ================= PRICE ================= */
 .price-row {
     margin-top: 24px;
     display: flex;
@@ -206,7 +195,6 @@ a { text-decoration: none; }
     cursor: pointer;
 }
 
-/* ================= FAVORITE ================= */
 .fav {
     font-size: 18px;
     color: #94a3b8;
@@ -220,7 +208,6 @@ a { text-decoration: none; }
     background: rgba(239,35,60,.15);
 }
 
-/* ================= REVIEW ================= */
 
 
     /* BOX */
@@ -230,7 +217,6 @@ a { text-decoration: none; }
         border-radius: 16px;
     }
 
-    /* HEADER */
     .rv-header {
         display: flex;
         align-items: center;
@@ -253,7 +239,6 @@ a { text-decoration: none; }
         border-radius: 8px;
     }
 
-    /* ITEM */
     .rv-item {
         display: flex;
         gap: 16px;
@@ -261,7 +246,6 @@ a { text-decoration: none; }
         border-bottom: 1px solid #E5E7EB;
     }
 
-    /* AVATAR */
     .rv-avatar {
         width: 44px;
         height: 44px;
@@ -269,7 +253,6 @@ a { text-decoration: none; }
         flex-shrink: 0;
     }
 
-    /* CONTENT */
     .rv-content {
         max-width: 520px;
     }
@@ -291,8 +274,6 @@ a { text-decoration: none; }
         line-height: 1.6;
         color: #64748B;
     }
-
-    /* RIGHT SIDE */
     .rv-right {
         margin-left: auto;
         text-align: right;
@@ -310,7 +291,6 @@ a { text-decoration: none; }
         color: #FBBF24;
     }
 
-    /* SHOW ALL */
     .show-all {
         margin-top: 22px;
         background: none;
@@ -323,7 +303,6 @@ a { text-decoration: none; }
         text-align: center;
     }
 
-/* ================= RECOMMEND ================= */
 .morent-grid {
     padding: 20px 30px 40px;
     display: grid;
@@ -337,9 +316,7 @@ a { text-decoration: none; }
     border-radius: 12px;
 }
 
-/* ================= RESPONSIVE ================= */
 
-/* TABLET */
 @@media (max-width: 992px) {
     .layout {
         grid-template-columns: 1fr;
@@ -359,7 +336,6 @@ a { text-decoration: none; }
     }
 }
 
-/* MOBILE */
 @@media (max-width: 576px) {
     .content {
         padding: 12px;
@@ -415,22 +391,18 @@ a { text-decoration: none; }
 }
    
 
-    /* Grid đúng chuẩn Morent */
     .morent-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 24px;
     }
 
-    /* Card gọn – đều */
     .morent-card {
         padding: 18px;
         border-radius: 14px;
         display: flex;
         flex-direction: column;
     }
-
-    /* Header */
     .card-top {
         display: flex;
         justify-content: space-between;
@@ -448,14 +420,12 @@ a { text-decoration: none; }
             color: #94a3b8;
         }
 
-    /* ẢNH XE – CENTER + TO */
     .car-img {
         height: 130px;
         object-fit: contain;
         margin: 14px 0 10px;
     }
 
-    /* Spec 1 hàng icon */
     .spec-line {
         display: flex;
         justify-content: space-between;
@@ -464,7 +434,6 @@ a { text-decoration: none; }
         margin-top: 6px;
     }
 
-    /* Giá + nút cùng 1 hàng */
     .price-area {
         display: flex;
         justify-content: space-between;
@@ -483,14 +452,13 @@ a { text-decoration: none; }
         text-decoration: line-through;
     }
 
-    /* Nút đúng UI ảnh 2 */
     .price-area .rent-btn {
         padding: 8px 14px;
         font-size: 13px;
         border-radius: 8px;
     }
 
-    /* Tim yêu thích */
+  
     .morent-card .fav {
         font-size: 16px;
     }
@@ -526,11 +494,9 @@ a { text-decoration: none; }
         <small>Max $100.00</small>
     </div>
 
-    <!-- ===== RIGHT CONTENT ===== -->
     <div>
 
         <div class="content">
-            <!-- LEFT IMAGE -->
             <div class="car-box">
                 <div class="main-image-box">
                     <div class="bg-pattern"></div>
@@ -544,7 +510,6 @@ a { text-decoration: none; }
                 </div>
             </div>
 
-            <!-- RIGHT INFO -->
             <div class="info-box">
                 <div class="car-title">Nissan GT-R    <i class="fa fa-heart fav"></i></div>
              
@@ -603,7 +568,6 @@ a { text-decoration: none; }
             </div>
         </div>
 
-        <!-- REVIEWS -->
         <div class="review-box">
             <div class="rv-header">
                 <h3>Reviews</h3>

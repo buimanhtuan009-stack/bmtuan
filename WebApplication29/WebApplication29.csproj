@@ -260,7 +260,6 @@
     <Content Include="Views\Home\TrangChu1.cshtml" />
     <Content Include="Views\Home\ChiTiet.cshtml" />
     <Content Include="Views\Home\Thanhtoan.cshtml" />
-    <Content Include="Views\Home\admin.cshtml" />
     <Content Include="Views\admin\admin1.cshtml" />
   </ItemGroup>
   <ItemGroup>

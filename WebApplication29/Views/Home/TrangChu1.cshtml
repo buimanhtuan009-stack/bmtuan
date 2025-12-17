@@ -10,15 +10,12 @@
 *{box-sizing:border-box}
 html,body{margin:0;font-family:Arial;background:#f5f7fb;max-width:100%;overflow-x:hidden}
 
-/* ================= LAYOUT ================= */
 .page-layout{display:grid;grid-template-columns:260px 1fr;width:100%}
 
-/* ================= SIDEBAR ================= */
 .filter-box{background:#fff;padding:20px;border-right:1px solid #eee}
 .filter-title{font-size:12px;font-weight:bold;color:#999;margin:10px 0;text-transform:uppercase}
 .filter-item{font-size:14px;margin-bottom:8px}
 
-/* ================= SEARCH ================= */
 .search-wrapper{display:flex;align-items:center;gap:25px;margin:0}
 .search-card{flex:1;background:#fff;padding:18px 25px;border-radius:22px;box-shadow:0 10px 25px rgba(0,0,0,.05)}
 .search-title{font-size:18px;font-weight:600;margin-bottom:18px;display:flex;gap:8px}
@@ -32,11 +29,9 @@ html,body{margin:0;font-family:Arial;background:#f5f7fb;max-width:100%;overflow-
 
 .swap-btn-center{width:50px;height:50px;border-radius:12px;background:#3563e9;color:#fff;border:none;font-size:20px}
 
-/* ================= GRID ================= */
 .car-list-grid{display:grid;grid-template-columns:repeat(3,1fr)}
 .morent-card{background:#fff;padding:16px;border-right:1px solid #eee;border-bottom:1px solid #eee}
 
-/* ================= CARD ================= */
 .morent-card-top{display:flex;justify-content:space-between}
 .morent-card-top h4{font-size:14px;margin:0}
 .morent-card-top small{font-size:12px;color:#888}
@@ -52,11 +47,9 @@ html,body{margin:0;font-family:Arial;background:#f5f7fb;max-width:100%;overflow-
 .price{font-size:15px;font-weight:bold;color:#3563e9}
 .rent-btn{background:#3563e9;color:#fff;border:none;padding:8px 16px;font-size:13px}
 
-/* ================= SHOW MORE ================= */
 .show-more-wrap{text-align:center;padding:10px;background:#fff;border-top:1px solid #eee}
 .show-more{background:#3563e9;color:#fff;border:none;padding:10px 50px;font-weight:bold}
 
-/* ================= MOBILE ================= */
 @@media(max-width:480px){
 .page-layout{grid-template-columns:1fr}
 .filter-box{display:none}
@@ -70,7 +63,6 @@ html,body{margin:0;font-family:Arial;background:#f5f7fb;max-width:100%;overflow-
 .rent-btn,.show-more{width:100%}
 }
 
-/* ================= TABLET ================= */
 @@media(min-width:481px) and (max-width:768px){
 .page-layout{grid-template-columns:1fr}
 .filter-box{display:none}

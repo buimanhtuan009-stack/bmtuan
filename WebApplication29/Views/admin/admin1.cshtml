@@ -9,16 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Morent - Dashboard</title>
 
-    <!-- Optional: use Inter from Google for closer match -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-/* ===== RESET ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;font-family:Inter,sans-serif;background:#F6F7FA;color:#1A202C}
 img{max-width:100%;display:block}
 
-/* ===== NAVBAR ===== */
 .navbar{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bottom:1px solid #E6E9EE;display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:40}
 .logo{font-size:22px;font-weight:700;color:#3563E9}
 .search-box{display:flex;align-items:center;gap:10px;width:520px;max-width:46%;height:44px;border:1px solid #ECEFF4;border-radius:28px;padding:0 14px}
@@ -27,28 +24,25 @@ img{max-width:100%;display:block}
 .icon-btn,.avatar{width:40px;height:40px;border-radius:50%}
 .icon-btn{border:1px solid #ECEFF4;display:flex;align-items:center;justify-content:center}
 
-/* ===== LAYOUT ===== */
+
 .page-wrapper{display:flex;margin-top:72px;min-height:calc(100vh - 72px)}
 .sidebar{width:240px;background:#fff;padding:20px;border-right:1px solid #E9EEF6;position:fixed;top:72px;bottom:0;overflow:auto}
 .dashboard{margin-left:260px;padding:28px;width:calc(100% - 260px);display:grid;grid-template-columns:1.55fr 1fr;gap:22px}
 
-/* ===== SIDEBAR ===== */
 .menu-section{font-size:12px;font-weight:600;color:#c1c7d6;margin:20px 0 10px}
 .menu-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:#6b7a99;font-size:15px;cursor:pointer}
 .menu-item.active{background:#3d5cff;color:#fff}
 .menu-item i{font-size:20px}
 
-/* ===== CARD ===== */
 .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 6px 20px rgba(12,20,30,.04)}
 .card h3{font-size:16px;font-weight:600;margin-bottom:14px}
 
-/* ===== DETAILS ===== */
 .map{height:200px;border-radius:12px;overflow:hidden;background:#f2f6fb;margin-bottom:16px}
 .car-info{display:flex;align-items:center;gap:12px}
 .car-info img{width:84px;height:48px;border-radius:10px}
 .car-id{margin-left:auto;font-size:13px;color:#9ca3af}
 
-/* ===== PICK ===== */
+
 .pick-title{font-size:15px;font-weight:600;display:flex;gap:8px;margin:10px 0}
 .pick-title .dot{width:10px;height:10px;border-radius:50%;background:#3a7bff}
 .pick-row{display:flex;gap:28px;margin-bottom:14px}
@@ -56,23 +50,21 @@ img{max-width:100%;display:block}
 .field-label{font-size:12px;color:#6b7280;margin-bottom:6px}
 .field-input{background:#F3F4F6;border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between}
 
-/* ===== TOTAL ===== */
+
 .total{display:flex;justify-content:space-between;border-top:1px solid #EEF1F5;padding-top:14px}
 .total strong{font-size:26px}
 
-/* ===== CHART ===== */
+
 .chart-content{display:flex;gap:18px;align-items:center}
 .chart-circle{width:150px;height:150px;border-radius:50%;background:conic-gradient(#0A276A 0 85deg,#0B63E5 85deg 145deg,#4CA9FF 145deg 220deg,#7DC9FF 220deg 275deg,#BEE6FF 275deg)}
 .circle-inner{width:90px;height:90px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .chart-list{display:flex;flex-direction:column;gap:10px}
 
-/* ===== TRANSACTION ===== */
 .rt-item{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E5E7EB;padding:14px 0}
 .rt-img{width:90px}
 .rt-title{font-weight:600}
 .rt-right{text-align:right}
 
-/* ===== RESPONSIVE ===== */
 @@media(max-width:768px){
 .sidebar{display:none}
 .dashboard{margin:0;padding:16px;grid-template-columns:1fr}
